@@ -616,7 +616,7 @@
 		loop: true,
 		autoplay: {
 			enabled: true,
-			delay: 6000
+			delay: 1000
 		},
 		// Navigation arrows
 		navigation: {
