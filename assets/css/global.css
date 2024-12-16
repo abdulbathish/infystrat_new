@@ -75,11 +75,11 @@
 :root {
 	
 	/* #761FE3 in decimal RGB */
-	--main-color: #800020;
-	--main-color-rgb:#800020;
+	--main-color: #007991;
+	--main-color-rgb:#007991;
 	
 	/* #141414 in decimal RGB */
-	--color-two: rgb(20,20,20);
+	--color-two: #0D1321;
 	--color-two-rgb:20,20,20;
 	
 	/* #BDBDBD in decimal RGB */
@@ -428,7 +428,7 @@ h6{
 .auto-container{
 	position:static;
 	max-width:1350px;
-	padding:0px 15px;
+	padding:0px 25px;
 	margin:0 auto;
 }
 

@@ -89,6 +89,7 @@
 
 .slider-one{
 	position:relative;
+	
 }
 
 .slider-one::before{
@@ -359,11 +360,12 @@
 
 .slider-one_image-column{
 	position: relative;
+	align-content: center;
 }
 
 .slider-one_image-outer{
 	position: relative;
-	padding-bottom: 75px;
+	/* padding-bottom: 75px; */
 }
 
 .slider-one_image{
@@ -391,6 +393,10 @@
 	left: -100px;
 	z-index: 1;
 	bottom: 100px;
+	transition-delay: 7000ms;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+
+	
 }
 
 .slider-one_graph-title{
@@ -1237,6 +1243,7 @@
 	border-radius: 8px;
 	background: rgba(var(--white-color-rgb), 0.05);
     background: linear-gradient(to bottom, rgba(var(--white-color-rgb), 0.05) 0%, var(--color-seven) 100%);
+	height: 100%; /* Ensure full height of the slide */
 }
 
 .testimonial-block_one-inner::before{
@@ -1262,6 +1269,7 @@
 	font-size: 22px;
 	line-height: 32px;
 	color: var(--color-six);
+	flex-grow: 1; /* Allow this to expand and fill available space */
 }
 
 .testimonial-block_one-text span{
@@ -1302,6 +1310,15 @@
 	z-index: 10;
 	margin-top: 30px;
 	text-align: center;
+}
+.three-item_carousel .swiper-slide {
+    height: auto; /* Allow initial auto height */
+}
+.three-item_carousel {
+    position: relative;
+}
+.three-item_carousel .swiper-wrapper {
+    align-items: stretch; /* Stretch slides to same height */
 }
 
 .testimonial-one .swiper-pagination-bullet{
@@ -4546,7 +4563,7 @@
 }
 
 .testimonial-three::before{
-	position: absolute;
+	/* position: absolute; */
 	content: '';
 	left: 0px;
 	top: 0px;
@@ -4554,11 +4571,11 @@
 	width: 350px;
 	z-index: 2;
 	background: rgba(var(--color-four-rgb), 1);
-    background: linear-gradient(to left, rgba(var(--color-four-rgb), 0) 0%, var(--color-four) 100%);
+    background: yellow
 }
 
 .testimonial-three::after{
-	position: absolute;
+	/* position: absolute; */
 	content: '';
 	right: 0px;
 	top: 0px;
@@ -5156,7 +5173,7 @@
     text-align: center;
     margin-top: 110px;
     padding: 135px 0px 135px;
-    background-image: url('/assets/images/background/infystrat_software_services_cover.jpeg');
+    background-image: url('/assets/images/background/4884273.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -5200,7 +5217,7 @@
 	background-repeat: no-repeat;
 }
 
-.page-title:before {
+/* .page-title:before {
     position: absolute;
     content: '';
     left: 70px;
@@ -5211,7 +5228,7 @@
     border-radius: 16px;
     background: var(--main-color);
     background: linear-gradient(to right, var(--main-color) 0%, var(--color-five) 100%);
-}
+} */
 .page-title h2 {
     color: var(--white-color);
     position: relative;
@@ -5779,16 +5796,25 @@
 	color: var(--color-three);
 }
 
-.service-detail_image{
-	position: relative;
-	overflow: hidden;
-	border-radius: 20px;
+.service-detail_image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px; /* Set a minimum height */
 }
 
-.service-detail_image img{
-	position: relative;
-	width: 100%;
-	display: block;
+.service-detail_image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This ensures the image covers the entire div while maintaining aspect ratio */
+    border-radius: 10px;
 }
 
 /*** 
@@ -6549,11 +6575,12 @@
 	position: relative;
 	overflow: hidden;
 	border-radius: 8px;
+	justify-items: center;
 }
 
 .blog-detail_image img{
 	position: relative;
-	width: 100%;
+	width: 80%;
 	display: block;
 }
 
@@ -6797,7 +6824,7 @@
     position: absolute;
 }
 
-.blog-detail h3{
+.blog-detail h3,h4{
 	font-weight: 600;
 	margin-bottom: 20px;
 	color: var(--white-color);
@@ -6816,6 +6843,7 @@
 	font-size: 16px;
 	margin-bottom: 20px;
 	color: var(--color-six);
+	align-items: center;
 }
 
 .blog-detail_list li i{
