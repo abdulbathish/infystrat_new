@@ -1282,27 +1282,38 @@
 
 .testimonial-block_one-author_box{
 	position: relative;
-	
-	font-size: 20px;
-	padding-top: 7px;
-	align-items: center;
-	padding-left: 80px;
-	display: inline-block;
-	color: var(--white-color);
-	margin-top: 0;
-    /* Ensure it stays at the bottom */
+    font-size: 20px;
+    padding-top: 7px;
+    align-items: center;
+    padding-left: 80px;
+    display: inline-block;
+    color: var(--white-color);
     margin-top: auto;
+    min-height: 60px; 
 }
 
 .testimonial-block_one-author-image{
 	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 60px;
-	height: 60px;
-	border-radius: 150px;
-	overflow: hidden;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	/* top: 25%; */
 }
+
+.testimonial-block_one-author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the container without distortion */
+    object-position: center; /* Centers the image */
+}
+
 
 .testimonial-block_one-author_box span{
 	position: relative;
@@ -1311,6 +1322,7 @@
 	margin-top: 6px;
 	color: var(--color-six);
 }
+
 
 .testimonial-one .three-item_carousel-pagination{
 	position: relative;
