@@ -1234,6 +1234,7 @@
 .testimonial-block_one{
 	position: relative;
 	margin-bottom: 30px;
+	height: 100%;
 }
 
 .testimonial-block_one-inner{
@@ -1244,6 +1245,8 @@
 	background: rgba(var(--white-color-rgb), 0.05);
     background: linear-gradient(to bottom, rgba(var(--white-color-rgb), 0.05) 0%, var(--color-seven) 100%);
 	height: 100%; /* Ensure full height of the slide */
+	display: flex;
+    flex-direction: column;
 }
 
 .testimonial-block_one-inner::before{
@@ -1269,7 +1272,8 @@
 	font-size: 22px;
 	line-height: 32px;
 	color: var(--color-six);
-	flex-grow: 1; /* Allow this to expand and fill available space */
+	flex: 1 0 auto;
+    margin-bottom: 20px;
 }
 
 .testimonial-block_one-text span{
@@ -1278,13 +1282,16 @@
 
 .testimonial-block_one-author_box{
 	position: relative;
-	margin-top: 40px;
+	
 	font-size: 20px;
 	padding-top: 7px;
 	align-items: center;
 	padding-left: 80px;
 	display: inline-block;
 	color: var(--white-color);
+	margin-top: 0;
+    /* Ensure it stays at the bottom */
+    margin-top: auto;
 }
 
 .testimonial-block_one-author-image{
@@ -1312,7 +1319,8 @@
 	text-align: center;
 }
 .three-item_carousel .swiper-slide {
-    height: auto; /* Allow initial auto height */
+    height: auto;
+    display: flex;
 }
 .three-item_carousel {
     position: relative;
