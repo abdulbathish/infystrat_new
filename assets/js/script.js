@@ -78,7 +78,7 @@
 		});
 		
 	}
-	
+
 	
 	//Mobile Nav Hide Show
 	if($('.mobile-menu').length){
@@ -428,15 +428,14 @@
 		loop: true,
 		autoplay: {
 			enabled: true,
-			delay: 6000
+			delay: 5000,
+			disableOnInteraction: false  // Add this line
 		},
-		// Navigation arrows
 		navigation: {
 			nextEl: '.main-slider-next',
 			prevEl: '.main-slider-prev',
 			clickable: true,
 		},
-		//Pagination
 		pagination: {
 			el: ".swiper-pagination",
 			clickable: true,
@@ -883,6 +882,28 @@
 			}
 		});
 	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+		const menuItems = document.querySelectorAll('.mega-menu-item');
+		
+		menuItems.forEach(item => {
+			item.addEventListener('mouseenter', function() {
+				// Remove active class from all items
+				menuItems.forEach(i => i.classList.remove('active'));
+				// Add active class to current item
+				this.classList.add('active');
+				
+				// Hide all submenu content
+				document.querySelectorAll('.submenu-content').forEach(content => {
+					content.classList.remove('active');
+				});
+				
+				// Show current submenu content
+				const targetId = this.getAttribute('data-target');
+				document.getElementById(targetId).classList.add('active');
+			});
+		});
+	});
 	
 	
 	
