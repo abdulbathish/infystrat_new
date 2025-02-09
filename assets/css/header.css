@@ -328,7 +328,98 @@
         max-height: calc(100vh - 80px);
     }
 }
+
+
+/* Mobile Menu Additional Styles */
+@media (max-width: 991px) {
+    .mobile-menu {
+        transition: visibility 0.3s ease;
+    }
+    
+    .mobile-menu .menu-box {
+        transition: right 0.3s ease;
+    }
+    
+    .mobile-menu .menu-backdrop {
+        transition: all 0.3s ease;
+    }
+    
+    /* Specific styles for What We Do link in mobile */
+    .mobile-menu .navigation li.mega-menu {
+        position: relative;
+    }
+    
+    .mobile-menu .navigation li.mega-menu > a {
+        position: relative;
+        display: block;
+        padding: 12px 20px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Add a subtle indicator that it scrolls to footer */
+    .mobile-menu .navigation li.mega-menu > a:after {
+        content: "↓";
+        margin-left: 8px;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+    
+    /* Hover/Active state */
+    .mobile-menu .navigation li.mega-menu > a:hover,
+    .mobile-menu .navigation li.mega-menu > a:active {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
 /* Login Box */
+
+.main-header .header-lower .logo-box {
+    padding-right: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.main-header .header-lower .logo-box .logo {
+    padding: 15px 0;
+}
+
+.main-header .header-lower .nav-outer {
+    padding: 0;
+    margin: 0;
+}
+
+.right-nav {
+    margin-left: auto;
+}
+
+.right-nav .navigation {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.right-nav .navigation li {
+    margin: 0 15px;
+    list-style: none;
+}
+
+.right-nav .navigation li a {
+    padding: 18px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-three);
+    transition: all 0.3s ease;
+}
+
+.right-nav .navigation li a:hover {
+    color: var(--main-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .right-nav .navigation {
+        display: none;
+    }
+}
 
 .header-login_box{
 	position: relative;

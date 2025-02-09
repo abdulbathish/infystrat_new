@@ -151,6 +151,58 @@
 	}
 
 
+	document.addEventListener('DOMContentLoaded', function() {
+		// Find the mobile menu What We Do link
+		const mobileWhatWeDoLink = document.querySelector('.mobile-menu .navigation li.mega-menu > a');
+		
+		if (mobileWhatWeDoLink) {
+			// Remove the default dropdown behavior
+			mobileWhatWeDoLink.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				// Close the mobile menu
+				const menuBox = document.querySelector('.mobile-menu');
+				const body = document.body;
+				
+				menuBox.classList.remove('mobile-menu-visible');
+				body.classList.remove('mobile-menu-visible');
+				
+				// Wait for menu close animation to complete
+				setTimeout(() => {
+					// Find the first section in footer (Industry)
+					const industrySection = document.querySelector('.footer-lists_outer');
+					
+					if (industrySection) {
+						// Calculate position with offset for better visibility
+						const scrollPosition = industrySection.offsetTop - 20;
+						
+						// Smooth scroll to the section
+						window.scrollTo({
+							top: scrollPosition,
+							behavior: 'smooth'
+						});
+						
+						// Highlight the sections briefly to show user where to look
+						const sections = document.querySelectorAll('.footer-title');
+						sections.forEach(section => {
+							section.classList.add('highlight-section');
+							setTimeout(() => {
+								section.classList.remove('highlight-section');
+							}, 2000);
+						});
+					}
+				}, 300);
+			});
+			
+			// Remove dropdown functionality for What We Do on mobile
+			const dropdownBtn = mobileWhatWeDoLink.parentElement.querySelector('.dropdown-btn');
+			if (dropdownBtn) {
+				dropdownBtn.remove();
+			}
+		}
+	});
+
+
 
 
 	const serviceImgItem = document.querySelectorAll(".news-block_two-inner");

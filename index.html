@@ -65,7 +65,8 @@
         <div class="auto-container">
             <div class="inner-container">
                 <div class="d-flex align-items-center justify-content-between flex-wrap">
-                    <div class="nav-outer d-flex align-items-center flex-wrap">
+                    <!-- Left Side - Logo and Main Navigation -->
+                    <div class="nav-outer d-flex align-items-center flex-wrap flex-grow-1">
                         <div class="logo-box">
                             <div class="logo"><a href="index.html"><img src="assets/images/logo.svg" alt="" title=""></a></div>
                         </div>
@@ -81,13 +82,14 @@
 
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class="mega-menu"><a href="#">What we do</a>
+                                    <li class="mega-menu dropdown"><a href="#">What we do</a>
                                         <div class="mega-menu-container">
+                                            <!-- Mega menu content remains the same -->
                                             <div class="mega-menu-grid">
                                                 <div class="mega-menu-column">
                                                     <h4>Products</h4>
                                                     <ul>
-														<li><a href="learning-talent-management.html">Learning & Talent Management Platform</a></li>
+                                                        <li><a href="learning-talent-management.html">Learning & Talent Management Platform</a></li>
 														<li><a href="digital-banking.html">
 															Digital Banking Platform</a></li>
 														<li><a href="telehealth.html">
@@ -187,27 +189,18 @@
                                             <li><a href="paysoft-technologies-pty-limited.html">PAYSOFT TECHNOLOGIES (PTY) LIMITED</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="careers.html">Careers</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+									<li><a href="careers.html">Careers</a></li>
                                 </ul>
                             </div>
                         </nav>
                     </div>
 
                     <!-- Right Side Menu -->
-                    <div class="outer-box d-flex align-items-center flex-wrap">
-                        <div class="language-dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="flag"><img src="assets/images/icons/flag.png" alt="" /></span>&nbsp;
-                                <span class="fa-solid fa-angle-down fa-fw"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#"><span class="flag"><img src="assets/images/icons/flag.png" alt="" /></span> English</a></li>
-                                <li><a class="dropdown-item" href="#"><span class="flag"><img src="assets/images/icons/arabic.png" alt="" /></span> Arabic</a></li>
-                                <li><a class="dropdown-item" href="#"><span class="flag"><img src="assets/images/icons/germany.png" alt="" /></span> German</a></li>
-                            </ul>
-                        </div>
-
+                    <div class="right-nav d-flex align-items-center">
+                        <ul class="navigation clearfix">
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                        
                         <div class="mobile-nav-toggler">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

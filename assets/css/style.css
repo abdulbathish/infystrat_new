@@ -1601,6 +1601,13 @@
     background: linear-gradient(to top, rgba(var(--color-two-rgb), 1) 0%, rgba(var(--white-color-rgb), 0) 100%);
 }
 
+.text, p {
+    position: relative;
+    line-height: 1.7em;
+    color: #fff;
+    font-size: 16px;
+}
+
 /*** 
 
 ====================================================================
@@ -7552,114 +7559,103 @@
 
 ***/
 
-.contact-info{
-	position: relative;
-	padding: 100px 0px 70px;
-	background-color: var(--color-four);
-	border-bottom: 1px solid rgba(var(--white-color-rgb), 0.06);
+.contact-info {
+    position: relative;
+    padding: 100px 0px 70px;
+    background-color: var(--color-four);
+    border-bottom: 1px solid rgba(var(--white-color-rgb), 0.06);
 }
 
-.info-block_one{
-	position: relative;
-	margin-bottom: 30px;
+/* Add display flex to the row to enable equal height columns */
+.contact-info .row {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.info-block_one-inner{
-	position: relative;
-	text-align: center;
-	border-radius: 8px;
-	padding: 50px 30px 42px;
-	background-color: var(--color-seven);
+.info-block_one {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;  /* Make the block a flex container */
 }
 
-.info-block_one-icon{
-	position: relative;
-	width: 70px;
-	height: 70px;
-	margin: 0 auto;
-	font-size: 34px;
-	line-height: 76px;
-	border-radius: 50px;
-	color: var(--main-color);
-	background-color: rgba(var(--main-color-rgb), 0.20);
-}
-
-.info-block_one h4{
-	position: relative;
-	font-weight: 600;
-	margin-top: 25px;
-	font-size: 24px;
-	line-height: 34px;
-	margin-bottom: 15px;
-	color: var(--white-color);
-}
-
-.info-block_one-inner a{
-	position: relative;
-	font-size: 16px;
-	margin-bottom: 5px;
-	display: inline-block;
-	color: var(--color-three);
-}
-
-.info-block_one-inner a:hover{
-	color: var(--white-color);
-}
-
-.info-block_one .text{
-	position: relative;
-	font-size: 16px;
-	line-height: 27px;
-	color: var(--color-three);
-}
-
-.info-block_one.active .info-block_one-inner{
-	background-color: var(--main-color);
-}
-
-.info-block_one.active .info-block_one-icon{
-	color: var(--main-color);
-	background-color: var(--white-color);
-}
-
-.contact-form input.error,
-.contact-form select.error,
-.contact-form textarea.error{
-	border-color:#ff0000 !important;	
-}
-
-.contact-form label.error{
-	display:block;
-	line-height:24px;
-	padding:5px 0px 0px;
-	margin:0px;
-	text-transform:uppercase;
-	font-size:12px;
-	color:#ff0000;
-	font-weight:500;	
-}
-
-.contact-social_box{
-	position: relative;
-}
-
-.contact-social_box a{
-	position: relative;
-	width: 40px;
-    height: 40px;
-    font-size: 14px;
-    line-height: 38px;
-    margin-right: 6px;
-    border-radius: 50px;
+.info-block_one-inner {
+    position: relative;
     text-align: center;
-    display: inline-block;
-    color: var(--white-color);
-    border: 1px solid rgba(var(--white-color-rgb), 0.07);
+    border-radius: 8px;
+    padding: 50px 30px 42px;
+    background-color: var(--color-seven);
+    width: 100%;        /* Ensure inner block takes full width */
+    display: flex;      /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+    height: 100%;      /* Take full height of parent */
+    min-height: 350px; /* Set minimum height for consistency */
 }
 
-.contact-social_box a:hover{
-	border-color: var(--main-color);
-	background-color: var(--main-color);
+.info-block_one-icon {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    font-size: 34px;
+    line-height: 76px;
+    border-radius: 50px;
+    color: var(--main-color);
+    background-color: rgba(var(--main-color-rgb), 0.20);
+    flex-shrink: 0;    /* Prevent icon from shrinking */
+}
+
+.info-block_one h4 {
+    position: relative;
+    font-weight: 600;
+    margin-top: 25px;
+    font-size: 24px;
+    line-height: 34px;
+    margin-bottom: 15px;
+    color: var(--white-color);
+    flex-shrink: 0;    /* Prevent heading from shrinking */
+}
+
+.info-block_one-inner a {
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: var(--color-three);
+}
+
+.info-block_one-inner a:hover {
+    color: var(--white-color);
+}
+
+.info-block_one .text {
+    position: relative;
+    font-size: 16px;
+    line-height: 27px;
+    color: var(--color-three);
+    flex-grow: 1;      /* Allow text area to grow and fill space */
+}
+
+/* Keep existing active state styles */
+.info-block_one.active .info-block_one-inner {
+    background-color: var(--main-color);
+}
+
+.info-block_one.active .info-block_one-icon {
+    color: var(--main-color);
+    background-color: var(--white-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .info-block_one-inner {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 767px) {
+    .info-block_one-inner {
+        min-height: 250px;
+    }
 }
 
 /*** 
