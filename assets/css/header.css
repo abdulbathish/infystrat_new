@@ -232,6 +232,9 @@
     transform: translateY(0);
 } */
 
+
+
+
 /* Grid Layout */
 .mega-menu-grid {
     display: grid;
@@ -1293,7 +1296,7 @@
 }
 
 .mobile-menu .nav-logo img{
-	max-width:200px;
+	max-width:100px;
 }
 
 .mobile-menu-visible{
