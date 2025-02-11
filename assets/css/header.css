@@ -138,10 +138,13 @@
 
 .menu-content {
     display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 .menu-content.active {
     display: block;
+    opacity: 1;
     animation: fadeIn 0.2s ease;
 }
 
@@ -158,6 +161,7 @@
     line-height: 1.5;
 }
 
+/* Unified Mega Menu Styling */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -168,12 +172,17 @@
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 14px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
     transition: all 0.2s ease;
-    display: block;
+    display: flex;
+    align-items: center;
 }
 
 .menu-grid a:hover {
     color: #fff;
+    background: rgba(255, 255, 255, 0.1);
     transform: translateX(4px);
 }
 
