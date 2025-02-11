@@ -149,58 +149,237 @@
 	    });
 		
 	}
-
-
 	document.addEventListener('DOMContentLoaded', function() {
-		// Find the mobile menu What We Do link
-		const mobileWhatWeDoLink = document.querySelector('.mobile-menu .navigation li.mega-menu > a');
+		// Get all mega menu containers
+		const megaMenus = document.querySelectorAll('.mega-menu');
 		
-		if (mobileWhatWeDoLink) {
-			// Remove the default dropdown behavior
-			mobileWhatWeDoLink.addEventListener('click', function(e) {
-				e.preventDefault();
-				
-				// Close the mobile menu
-				const menuBox = document.querySelector('.mobile-menu');
-				const body = document.body;
-				
-				menuBox.classList.remove('mobile-menu-visible');
-				body.classList.remove('mobile-menu-visible');
-				
-				// Wait for menu close animation to complete
-				setTimeout(() => {
-					// Find the first section in footer (Industry)
-					const industrySection = document.querySelector('.footer-lists_outer');
-					
-					if (industrySection) {
-						// Calculate position with offset for better visibility
-						const scrollPosition = industrySection.offsetTop - 20;
-						
-						// Smooth scroll to the section
-						window.scrollTo({
-							top: scrollPosition,
-							behavior: 'smooth'
-						});
-						
-						// Highlight the sections briefly to show user where to look
-						const sections = document.querySelectorAll('.footer-title');
-						sections.forEach(section => {
-							section.classList.add('highlight-section');
-							setTimeout(() => {
-								section.classList.remove('highlight-section');
-							}, 2000);
-						});
-					}
-				}, 300);
-			});
+		megaMenus.forEach(megaMenu => {
+		  // Check if this is a standard mega menu or subsidiaries menu
+		  const isSubsidiariesMenu = megaMenu.querySelector('.full-width') !== null;
+		  
+		  if (!isSubsidiariesMenu) {
+			// Handle standard mega menus with left navigation
+			const menuItems = megaMenu.querySelectorAll('.menu-item');
+			const menuContents = megaMenu.querySelectorAll('.menu-content');
+	  
+			// Set initial active states
+			const defaultMenuItem = megaMenu.querySelector('.menu-item');
+			const defaultSection = defaultMenuItem?.getAttribute('data-section');
 			
-			// Remove dropdown functionality for What We Do on mobile
-			const dropdownBtn = mobileWhatWeDoLink.parentElement.querySelector('.dropdown-btn');
-			if (dropdownBtn) {
-				dropdownBtn.remove();
+			if (defaultMenuItem && defaultSection) {
+			  defaultMenuItem.classList.add('active');
+			  const defaultContent = megaMenu.querySelector(`#${defaultSection}`);
+			  if (defaultContent) {
+				defaultContent.classList.add('active');
+			  }
 			}
-		}
-	});
+	  
+			// Add hover handlers for menu items
+			menuItems.forEach(item => {
+			  item.addEventListener('mouseenter', function() {
+				menuItems.forEach(i => i.classList.remove('active'));
+				menuContents.forEach(c => c.classList.remove('active'));
+	  
+				this.classList.add('active');
+				const sectionId = this.getAttribute('data-section');
+				const targetContent = megaMenu.querySelector(`#${sectionId}`);
+				if (targetContent) {
+				  targetContent.classList.add('active');
+				}
+			  });
+			});
+		  } else {
+			// For subsidiaries menu, just ensure content is always active
+			const subsidiariesContent = megaMenu.querySelector('.menu-content');
+			if (subsidiariesContent) {
+			  subsidiariesContent.classList.add('active');
+			}
+		  }
+		});
+	  
+		// Handle mega menu visibility and reset states
+		const menuTriggers = document.querySelectorAll('.has-dropdown');
+		
+		menuTriggers.forEach(trigger => {
+		  trigger.addEventListener('mouseenter', function() {
+			// Reset all standard mega menus when entering a new dropdown
+			megaMenus.forEach(menu => {
+			  const isSubsidiariesMenu = menu.querySelector('.full-width') !== null;
+			  
+			  if (!isSubsidiariesMenu) {
+				const items = menu.querySelectorAll('.menu-item');
+				const contents = menu.querySelectorAll('.menu-content');
+				
+				// Reset to default state
+				items.forEach(i => i.classList.remove('active'));
+				contents.forEach(c => c.classList.remove('active'));
+				
+				// Set first item as active if it exists
+				const firstItem = items[0];
+				if (firstItem) {
+				  firstItem.classList.add('active');
+				  const sectionId = firstItem.getAttribute('data-section');
+				  const firstContent = menu.querySelector(`#${sectionId}`);
+				  if (firstContent) {
+					firstContent.classList.add('active');
+				  }
+				}
+			  }
+			});
+		  });
+		});
+	  });
+
+
+
+
+
+
+
+	 document.addEventListener('DOMContentLoaded', function() {
+    // Add mobile menu button to header
+    const headerContainer = document.querySelector('.header-container');
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'mobile-menu-btn';
+    mobileMenuBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    `;
+    headerContainer.appendChild(mobileMenuBtn);
+
+    // Create mobile menu
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    document.body.appendChild(mobileMenu);
+
+    // Generate mobile menu content
+    const navList = document.querySelector('.nav-list');
+    const mobileNavList = document.createElement('ul');
+    mobileNavList.className = 'mobile-nav-list';
+
+    // Clone navigation items for mobile
+    navList.querySelectorAll('.nav-item').forEach(item => {
+        const mobileItem = document.createElement('li');
+        mobileItem.className = 'mobile-nav-item';
+        
+        const link = item.querySelector('.nav-link');
+        const hasDropdown = item.classList.contains('has-dropdown');
+        
+        // Check if it's the "What we do" section
+        if (link.textContent.trim() === 'What we do') {
+            // Create a direct link to the footer section with click handler
+            mobileItem.innerHTML = `<a href="#footer" class="mobile-nav-link">What we do</a>`;
+            // Add click handler to close mobile menu when clicking "What we do"
+            const whatWeDoLink = mobileItem.querySelector('.mobile-nav-link');
+            whatWeDoLink.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        // Handle "Who we are" section
+        else if (link.textContent.trim() === 'Who we are') {
+            const dropdownContent = item.querySelector('.mega-menu');
+            mobileItem.innerHTML = `
+                <a href="#" class="mobile-nav-link">
+                    Who we are
+                    <svg class="chevron" width="12" height="8" viewBox="0 0 12 8">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                    </svg>
+                </a>
+                <div class="mobile-dropdown">
+                    <div class="mobile-menu-grid">
+                        <a href="about.html">About Us</a>
+                        <a href="vision-mission.html">Vision & Mission</a>
+                    </div>
+                </div>
+            `;
+
+            // Add click event for dropdown toggle
+            const mobileLink = mobileItem.querySelector('.mobile-nav-link');
+            const mobileDropdown = mobileItem.querySelector('.mobile-dropdown');
+            
+            mobileLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileDropdown.classList.toggle('active');
+                mobileLink.querySelector('.chevron').style.transform = 
+                    mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+            });
+        }
+        // Handle other dropdown menus
+        else if (hasDropdown) {
+            const dropdownContent = item.querySelector('.mega-menu');
+            const menuGrid = dropdownContent.querySelector('.menu-grid') || 
+                           dropdownContent.querySelector('.subsidiaries-grid');
+            
+            if (menuGrid) {
+                mobileItem.innerHTML = `
+                    <a href="#" class="mobile-nav-link">
+                        ${link.textContent.trim()}
+                        <svg class="chevron" width="12" height="8" viewBox="0 0 12 8">
+                            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                        </svg>
+                    </a>
+                    <div class="mobile-dropdown">
+                        <div class="mobile-menu-grid">
+                            ${menuGrid.innerHTML}
+                        </div>
+                    </div>
+                `;
+
+                // Add click event for dropdown toggle
+                const mobileLink = mobileItem.querySelector('.mobile-nav-link');
+                const mobileDropdown = mobileItem.querySelector('.mobile-dropdown');
+                
+                mobileLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mobileDropdown.classList.toggle('active');
+                    mobileLink.querySelector('.chevron').style.transform = 
+                        mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            }
+        } 
+        // Handle regular links
+        else {
+            mobileItem.innerHTML = `<a href="${link.getAttribute('href')}" class="mobile-nav-link">${link.textContent}</a>`;
+        }
+        
+        mobileNavList.appendChild(mobileItem);
+    });
+
+    // Add contact button to mobile menu
+    const contactBtn = document.querySelector('.contact-btn');
+    if (contactBtn) {
+        const mobileContactItem = document.createElement('li');
+        mobileContactItem.className = 'mobile-nav-item';
+        mobileContactItem.innerHTML = `<a href="${contactBtn.getAttribute('href')}" class="mobile-nav-link">${contactBtn.textContent}</a>`;
+        mobileNavList.appendChild(mobileContactItem);
+    }
+
+    mobileMenu.appendChild(mobileNavList);
+
+    // Toggle mobile menu
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Fix "Who we are" menu loading
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const section = this.getAttribute('data-section');
+            document.querySelectorAll('.menu-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(section).classList.add('active');
+            document.querySelectorAll('.menu-item').forEach(menuItem => {
+                menuItem.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+});
 
 
 
