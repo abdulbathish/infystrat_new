@@ -153,15 +153,12 @@
 
 	
 	document.addEventListener('DOMContentLoaded', function() {
-		// Get all mega menu containers
 		const megaMenus = document.querySelectorAll('.mega-menu');
 		
 		megaMenus.forEach(megaMenu => {
-		  // Check if this is a standard mega menu or subsidiaries menu
 		  const isSubsidiariesMenu = megaMenu.querySelector('.full-width') !== null;
 		  
 		  if (!isSubsidiariesMenu) {
-			// Handle standard mega menus with left navigation
 			const menuItems = megaMenu.querySelectorAll('.menu-item');
 			const menuContents = megaMenu.querySelectorAll('.menu-content');
 	  
@@ -177,10 +174,10 @@
 			  }
 			}
 	  
-			// Add hover handlers for menu items
+			// Handle both hover and click events
 			menuItems.forEach(item => {
+			  // Hover handler
 			  item.addEventListener('mouseenter', function() {
-				// Only handle menu item changes within the same mega menu
 				const currentMenuItems = this.closest('.mega-menu').querySelectorAll('.menu-item');
 				const currentMenuContents = this.closest('.mega-menu').querySelectorAll('.menu-content');
 				
@@ -192,6 +189,16 @@
 				const targetContent = this.closest('.mega-menu').querySelector(`#${sectionId}`);
 				if (targetContent) {
 				  targetContent.classList.add('active');
+				}
+			  });
+	  
+			  // Reset on mouse leave
+			  item.closest('.has-dropdown').addEventListener('mouseleave', function() {
+				const items = this.querySelectorAll('.menu-item');
+				items.forEach(i => i.classList.remove('active'));
+				const firstItem = items[0];
+				if (firstItem) {
+				  firstItem.classList.add('active');
 				}
 			  });
 			});
@@ -209,7 +216,6 @@
 			  const isSubsidiariesMenu = currentMegaMenu.querySelector('.full-width') !== null;
 			  
 			  if (!isSubsidiariesMenu) {
-				// Only reset the current mega menu, not all of them
 				const items = currentMegaMenu.querySelectorAll('.menu-item');
 				const contents = currentMegaMenu.querySelectorAll('.menu-content');
 				
@@ -226,7 +232,6 @@
 				  }
 				}
 			  } else {
-				// For subsidiaries menu, ensure content stays active
 				const subsidiariesContent = currentMegaMenu.querySelector('.menu-content');
 				if (subsidiariesContent) {
 				  subsidiariesContent.classList.add('active');

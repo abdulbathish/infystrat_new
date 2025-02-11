@@ -262,10 +262,32 @@
 }
 
 /* Active nav-link state */
-.nav-link:hover,
-.nav-item:hover .nav-link {
-    color: rgba(255, 255, 255, 0.8);
+
+.nav-item:hover > .nav-link {
+    color: rgba(255, 255, 255, 1);
 }
+.nav-item:not(:hover) > .nav-link {
+    color: #fff;
+}
+.nav-item.active > .nav-link {
+    color: #fff;
+}
+
+/* Ensure menu items reset on mouse leave */
+.has-dropdown:not(:hover) .menu-item {
+    background: transparent;
+}
+/* Update mega menu hover states */
+.mega-menu .menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.mega-menu .menu-item:not(:hover):not(.active) {
+    background: transparent;
+}
+
+
 
 
 
