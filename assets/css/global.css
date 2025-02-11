@@ -75,11 +75,11 @@
 :root {
 	
 	/* #761FE3 in decimal RGB */
-	--main-color: #007991;
-	--main-color-rgb:#007991;
+	--main-color: #A91D3A;
+	--main-color-rgb:#41b987;
 	
 	/* #141414 in decimal RGB */
-	--color-two: #0D1321;
+	--color-two: #151515;
 	--color-two-rgb:20,20,20;
 	
 	/* #BDBDBD in decimal RGB */
