@@ -149,6 +149,9 @@
 	    });
 		
 	}
+
+
+	
 	document.addEventListener('DOMContentLoaded', function() {
 		// Get all mega menu containers
 		const megaMenus = document.querySelectorAll('.mega-menu');
@@ -177,59 +180,62 @@
 			// Add hover handlers for menu items
 			menuItems.forEach(item => {
 			  item.addEventListener('mouseenter', function() {
-				menuItems.forEach(i => i.classList.remove('active'));
-				menuContents.forEach(c => c.classList.remove('active'));
+				// Only handle menu item changes within the same mega menu
+				const currentMenuItems = this.closest('.mega-menu').querySelectorAll('.menu-item');
+				const currentMenuContents = this.closest('.mega-menu').querySelectorAll('.menu-content');
+				
+				currentMenuItems.forEach(i => i.classList.remove('active'));
+				currentMenuContents.forEach(c => c.classList.remove('active'));
 	  
 				this.classList.add('active');
 				const sectionId = this.getAttribute('data-section');
-				const targetContent = megaMenu.querySelector(`#${sectionId}`);
+				const targetContent = this.closest('.mega-menu').querySelector(`#${sectionId}`);
 				if (targetContent) {
 				  targetContent.classList.add('active');
 				}
 			  });
 			});
-		  } else {
-			// For subsidiaries menu, just ensure content is always active
-			const subsidiariesContent = megaMenu.querySelector('.menu-content');
-			if (subsidiariesContent) {
-			  subsidiariesContent.classList.add('active');
-			}
 		  }
 		});
 	  
-		// Handle mega menu visibility and reset states
+		// Handle mega menu visibility
 		const menuTriggers = document.querySelectorAll('.has-dropdown');
 		
 		menuTriggers.forEach(trigger => {
 		  trigger.addEventListener('mouseenter', function() {
-			// Reset all standard mega menus when entering a new dropdown
-			megaMenus.forEach(menu => {
-			  const isSubsidiariesMenu = menu.querySelector('.full-width') !== null;
+			const currentMegaMenu = this.querySelector('.mega-menu');
+			
+			if (currentMegaMenu) {
+			  const isSubsidiariesMenu = currentMegaMenu.querySelector('.full-width') !== null;
 			  
 			  if (!isSubsidiariesMenu) {
-				const items = menu.querySelectorAll('.menu-item');
-				const contents = menu.querySelectorAll('.menu-content');
+				// Only reset the current mega menu, not all of them
+				const items = currentMegaMenu.querySelectorAll('.menu-item');
+				const contents = currentMegaMenu.querySelectorAll('.menu-content');
 				
-				// Reset to default state
 				items.forEach(i => i.classList.remove('active'));
 				contents.forEach(c => c.classList.remove('active'));
 				
-				// Set first item as active if it exists
 				const firstItem = items[0];
 				if (firstItem) {
 				  firstItem.classList.add('active');
 				  const sectionId = firstItem.getAttribute('data-section');
-				  const firstContent = menu.querySelector(`#${sectionId}`);
+				  const firstContent = currentMegaMenu.querySelector(`#${sectionId}`);
 				  if (firstContent) {
 					firstContent.classList.add('active');
 				  }
 				}
+			  } else {
+				// For subsidiaries menu, ensure content stays active
+				const subsidiariesContent = currentMegaMenu.querySelector('.menu-content');
+				if (subsidiariesContent) {
+				  subsidiariesContent.classList.add('active');
+				}
 			  }
-			});
+			}
 		  });
 		});
 	  });
-
 
 
 
@@ -346,6 +352,9 @@
         
         mobileNavList.appendChild(mobileItem);
     });
+
+
+
 
     // Add contact button to mobile menu
     const contactBtn = document.querySelector('.contact-btn');
