@@ -1551,7 +1551,7 @@
 
 .step-block_one-inner{
 	position: relative;
-	padding: 30px 25px;
+	padding: 100px 25px;
 	border-radius: 8px;
 	background: rgba(var(--main-color-rgb), 1);
     background: linear-gradient(to bottom, rgba(var(--main-color-rgb), 1) 0%, var(--color-two) 100%);
@@ -5843,6 +5843,7 @@
 .choose-three{
 	position: relative;
 	z-index: 1;
+	padding-bottom: 5rem;
 }
 
 .choose-three.style-two::before{
