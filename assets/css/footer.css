@@ -10,8 +10,8 @@
 
 .main-footer{
 	position:relative;
-	margin-top: -100px;
-	background-color: var(--color-four);
+	margin-top: 0px;
+	background-color: var(--main-color);
 }
 
 .main-footer .footer_pattern{
@@ -26,7 +26,7 @@
 
 .main-footer .widgets-section{
 	position: relative;
-	padding: 100px 0px 70px;
+	padding: 50px 0px 70px;
 }
 
 .main-footer .footer-upper-box{
@@ -137,7 +137,7 @@
 
 .footer-lists_outer{
 	position: relative;
-	padding-left: 70px;
+	padding-left: 40px;
 }
 
 .footer-lists_outer .column:last-child{
@@ -200,7 +200,7 @@
 .main-footer.style-two{
 	overflow: hidden;
 	margin-top: 0px;
-	background-color: var(--color-seven);
+	background-color: var(--main-color);
 }
 
 .main-footer.style-two .widgets-section{
@@ -221,13 +221,13 @@
 }
 
 .main-footer.style-two .footer-bottom{
-	background: none;
+	background-color: var(--main-color);
 	border-top: 1px solid rgba(var(--white-color-rgb), 0.07);
 }
 
 
 .main-footer.style-three{
-	background-color: var(--color-two);
+	background-color: var(--main-color);
 }
 
 .main-footer.style-three .footer-lists_outer{
