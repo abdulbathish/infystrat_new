@@ -856,12 +856,19 @@
 	// Clients Slider
 	var slider = new Swiper('.clients_slider', {
 		slidesPerView: 5,
-		spaceBetween: 30,
+		spaceBetween: 12,
 		loop: true,
+		loopAdditionalSlides: 10,
+		watchOverflow: true,
 		autoplay: {
 			enabled: true,
-			delay: 1000
+			delay: 0,
+			pauseOnMouseEnter: true,
+			disableOnInteraction: false
 		},
+		speed: 3000,
+		freeMode: true,
+		freeModeMomentum: false,
 		// Navigation arrows
 		navigation: {
 			nextEl: '.clients_slider-button-next',
@@ -873,7 +880,6 @@
 			el: ".clients_slider-pagination",
 			clickable: true,
 		},
-		speed: 500,
 		breakpoints: {
 			'1600': {
 				slidesPerView: 5,

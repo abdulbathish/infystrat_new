@@ -5700,6 +5700,8 @@
 	-o-transition:all 500ms ease;
 	background-color: rgba(var(--white-color-rgb), 0.10);
 	padding: 10px; 
+	height: 80px;
+	min-height: 80px;
 }
 
 .clients-two .client-image:hover{
