@@ -592,6 +592,29 @@
 		margin-bottom: 30px;
 	}
 
+	/* Ensure slider arrows stay clear of CTA content */
+	.main-slider-prev,
+	.main-slider-next{
+		top: auto;
+		bottom: 20px;
+		transform: none;
+		z-index: 5;
+	}
+	.main-slider-prev{ left: 12px; }
+	.main-slider-next{ right: 12px; }
+
+	/* Center the slider CTA container and tighten spacing */
+	.slider-one .slider-one_button{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 12px;
+		margin-top: 8px;
+	}
+	/* Reduce heading/text spacing in slider */
+	.slider-one_heading{ margin-top: 12px; margin-bottom: 16px; }
+	.slider-one_text{ margin-bottom: 18px; }
+
 }
 
 @media only screen and (max-width: 820px){
@@ -781,6 +804,28 @@
 		margin-left: 12px;
 	}
 
+	/* Make CTA button smaller and full-tap friendly */
+	.btn-style-one{
+		padding: 12px 18px;
+		font-size: 14px;
+		border-radius: 6px;
+	}
+	/* Center CTA wrapper on small screens */
+	.slider-one .slider-one_button{ width: 100%; }
+	.slider-one .slider-one_button .template-btn{ margin: 0 auto; }
+
+	/* Pull slider bottom padding up to reduce overlap with pagination/arrows */
+	.slider-one .swiper-slide{ padding-bottom: 110px; }
+
+	/* Reduce section title and block spacing globally */
+	.sec-title{ margin-bottom: 28px; }
+	.services-one{ padding-top: 40px; padding-bottom: 50px; }
+	.news-one{ padding-top: 40px; padding-bottom: 50px; }
+	.social-one{ padding-bottom: 70px; }
+
+	/* Tighten service cards */
+	.service-block_one-inner{ padding: 22px 20px; }
+	.service-block_two-inner{ padding: 22px 20px; }
 }
 
 @media only screen and (max-width: 599px){
@@ -922,6 +967,13 @@
 		padding-right: 0px;
 	}
 
+	/* Further shrink CTA and center */
+	.btn-style-one{ padding: 10px 16px; font-size: 13px; }
+	.slider-one_text{ font-size: 15px; line-height: 24px; }
+	/* Extra space at bottom so arrows/pagination don't overlap CTA */
+	.slider-one .swiper-slide{ padding-bottom: 120px; }
+	/* Reduce gaps between repeated elements */
+	.counter-block_one{ margin-bottom: 18px; }
 }
 
 @media only screen and (max-width: 479px) {
@@ -1219,4 +1271,9 @@
 		display: none;
 	}
 
+	/* Keep arrows clear at very small widths */
+	.main-slider-prev,
+	.main-slider-next{ bottom: 14px; }
+	/* Tighten global section spacing */
+	.sec-title{ margin-bottom: 22px; }
 }

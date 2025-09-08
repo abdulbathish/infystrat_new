@@ -8037,6 +8037,27 @@
 .news-one .three-item_carousel-prev{ left: 8px; }
 .news-one .three-item_carousel-next{ right: 8px; }
 
+.news-one .three-item_carousel-prev,
+.news-one .three-item_carousel-next{
+	/* Override to force inline bottom-centered layout under the carousel */
+	top: auto;
+	bottom: 0;
+	transform: none;
+}
+
+/* Inline container for arrows below the swiper */
+.news-one .three-item_carousel{
+	padding-bottom: 48px; /* room for inline arrows */
+}
+
+.news-one .three-item_carousel-prev,
+.news-one .three-item_carousel-next{
+	/* anchor horizontally centered as a pair */
+	left: 50%;
+}
+.news-one .three-item_carousel-prev{ margin-left: -40px; }
+.news-one .three-item_carousel-next{ margin-left: 8px; }
+
 .news-one .three-item_carousel-prev:hover,
 .news-one .three-item_carousel-next:hover{
 	background: rgba(255,255,255,0.28);
@@ -8046,17 +8067,20 @@
 }
 
 @media (max-width: 768px){
+	.news-one .three-item_carousel{ padding-bottom: 44px; }
 	.news-one .three-item_carousel-prev,
 	.news-one .three-item_carousel-next{
 		width: 28px;
 		height: 28px;
-		opacity: 0.4;
+		opacity: 0.6;
 	}
 	.news-one .three-item_carousel-prev:hover,
 	.news-one .three-item_carousel-next:hover{
 		width: 30px;
 		height: 30px;
 	}
+	.news-one .three-item_carousel-prev{ margin-left: -36px; }
+	.news-one .three-item_carousel-next{ margin-left: 6px; }
 }
 
 /* Reduce Read more button size only in blog cards */
