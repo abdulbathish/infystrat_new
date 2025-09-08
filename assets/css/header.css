@@ -369,6 +369,17 @@
     padding: 8px 8px;
 }
 
+/* Nested sub-list for "What we do" */
+.mobile-sub-list {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0 8px 8px;
+}
+
+.mobile-sub-list > .mobile-nav-item {
+    margin-bottom: 12px;
+}
+
 /* Responsive breakpoints */
 @media (max-width: 1024px) {
     .mega-menu-inner {

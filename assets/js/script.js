@@ -277,16 +277,90 @@
         const link = item.querySelector('.nav-link');
         const hasDropdown = item.classList.contains('has-dropdown');
         
+        // Helper: close other top-level dropdowns
+        const closeSiblingsTopLevel = (currentLi) => {
+            mobileNavList.querySelectorAll(':scope > .mobile-nav-item').forEach(li => {
+                if (li !== currentLi) {
+                    const dd = li.querySelector(':scope > .mobile-dropdown');
+                    if (dd && dd.classList.contains('active')) dd.classList.remove('active');
+                    const chev = li.querySelector(':scope > .mobile-nav-link .chevron');
+                    if (chev) chev.style.transform = 'rotate(0)';
+                }
+            });
+        };
+        
         // Check if it's the "What we do" section
         if (link.textContent.trim() === 'What we do') {
-            // Create a direct link to the footer section with click handler
-            mobileItem.innerHTML = `<a href="#footer" class="mobile-nav-link">What we do</a>`;
-            // Add click handler to close mobile menu when clicking "What we do"
-            const whatWeDoLink = mobileItem.querySelector('.mobile-nav-link');
-            whatWeDoLink.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+            const dropdownContent = item.querySelector('.mega-menu');
+            const menuLeftItems = dropdownContent ? dropdownContent.querySelectorAll('.menu-left .menu-item') : [];
+            
+            // Build nested accordion using left menu (products/services/industries)
+            let subItemsMarkup = '';
+            menuLeftItems.forEach(leftItem => {
+                const sectionId = leftItem.getAttribute('data-section');
+                const sectionTitle = leftItem.textContent.trim();
+                const sectionContent = dropdownContent.querySelector(`#${sectionId}`);
+                const grid = sectionContent ? (sectionContent.querySelector('.menu-grid') || sectionContent.querySelector('.subsidiaries-grid')) : null;
+                if (grid) {
+                    subItemsMarkup += `
+                        <li class="mobile-nav-item">
+                            <a href="#" class="mobile-nav-link">
+                                ${sectionTitle}
+                                <svg class="chevron" width="12" height="8" viewBox="0 0 12 8">
+                                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                                </svg>
+                            </a>
+                            <div class="mobile-dropdown">
+                                <div class="mobile-menu-grid">${grid.innerHTML}</div>
+                            </div>
+                        </li>
+                    `;
+                }
             });
+            
+            mobileItem.innerHTML = `
+                <a href="#" class="mobile-nav-link">
+                    What we do
+                    <svg class="chevron" width="12" height="8" viewBox="0 0 12 8">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                    </svg>
+                </a>
+                <div class="mobile-dropdown">
+                    <ul class="mobile-sub-list">${subItemsMarkup}</ul>
+                </div>
+            `;
+            
+            // Top-level toggle
+            const topLink = mobileItem.querySelector(':scope > .mobile-nav-link');
+            const topDropdown = mobileItem.querySelector(':scope > .mobile-dropdown');
+            topLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const willOpen = !topDropdown.classList.contains('active');
+                closeSiblingsTopLevel(mobileItem);
+                topDropdown.classList.toggle('active', willOpen);
+                topLink.querySelector('.chevron').style.transform = willOpen ? 'rotate(180deg)' : 'rotate(0)';
+            });
+            
+            // Nested toggles (only one open at a time within What we do)
+            const subList = mobileItem.querySelector('.mobile-sub-list');
+            if (subList) {
+                subList.querySelectorAll(':scope > .mobile-nav-item').forEach(subItem => {
+                    const subLink = subItem.querySelector(':scope > .mobile-nav-link');
+                    const subDropdown = subItem.querySelector(':scope > .mobile-dropdown');
+                    subLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const willOpen = !subDropdown.classList.contains('active');
+                        // close siblings
+                        subList.querySelectorAll(':scope > .mobile-nav-item .mobile-dropdown.active').forEach(dd => {
+                            if (dd !== subDropdown) dd.classList.remove('active');
+                        });
+                        // reset sibling chevrons
+                        subList.querySelectorAll(':scope > .mobile-nav-item .mobile-nav-link .chevron').forEach(ch => ch.style.transform = 'rotate(0)');
+                        subDropdown.classList.toggle('active', willOpen);
+                        subLink.querySelector('.chevron').style.transform = willOpen ? 'rotate(180deg)' : 'rotate(0)';
+                    });
+                });
+            }
         }
         // Handle "Who we are" section
         else if (link.textContent.trim() === 'Who we are') {
@@ -305,16 +379,17 @@
                     </div>
                 </div>
             `;
-
-            // Add click event for dropdown toggle
+            
+            // Add click event for dropdown toggle with close-others
             const mobileLink = mobileItem.querySelector('.mobile-nav-link');
             const mobileDropdown = mobileItem.querySelector('.mobile-dropdown');
             
             mobileLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                mobileDropdown.classList.toggle('active');
-                mobileLink.querySelector('.chevron').style.transform = 
-                    mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                const willOpen = !mobileDropdown.classList.contains('active');
+                closeSiblingsTopLevel(mobileItem);
+                mobileDropdown.classList.toggle('active', willOpen);
+                mobileLink.querySelector('.chevron').style.transform = willOpen ? 'rotate(180deg)' : 'rotate(0)';
             });
         }
         // Handle other dropdown menus
@@ -338,15 +413,16 @@
                     </div>
                 `;
 
-                // Add click event for dropdown toggle
+                // Add click event for dropdown toggle with close-others
                 const mobileLink = mobileItem.querySelector('.mobile-nav-link');
                 const mobileDropdown = mobileItem.querySelector('.mobile-dropdown');
                 
                 mobileLink.addEventListener('click', (e) => {
                     e.preventDefault();
-                    mobileDropdown.classList.toggle('active');
-                    mobileLink.querySelector('.chevron').style.transform = 
-                        mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                    const willOpen = !mobileDropdown.classList.contains('active');
+                    closeSiblingsTopLevel(mobileItem);
+                    mobileDropdown.classList.toggle('active', willOpen);
+                    mobileLink.querySelector('.chevron').style.transform = willOpen ? 'rotate(180deg)' : 'rotate(0)';
                 });
             }
         } 
