@@ -763,7 +763,9 @@
 		loop: true,
 		autoplay: {
 			enabled: true,
-			delay: 6000
+			delay: 6000,
+			pauseOnMouseEnter: true,
+			disableOnInteraction: false
 		},
 		// Navigation arrows
 		navigation: {
@@ -801,6 +803,17 @@
 			},
 		},
 	});
+
+	// Fallback pause/resume on hover for older Swiper builds
+	var blogCarouselEl = document.querySelector('.three-item_carousel');
+	if (blogCarouselEl && slider && slider.autoplay) {
+		blogCarouselEl.addEventListener('mouseenter', function(){
+			if (slider.autoplay && slider.autoplay.stop) slider.autoplay.stop();
+		});
+		blogCarouselEl.addEventListener('mouseleave', function(){
+			if (slider.autoplay && slider.autoplay.start) slider.autoplay.start();
+		});
+	}
 
 
 
