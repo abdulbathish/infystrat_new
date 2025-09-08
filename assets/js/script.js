@@ -749,7 +749,7 @@
 		loop: true,
 		autoplay: {
 			enabled: true,
-			delay: 3000,
+			delay: 7000,
 			disableOnInteraction: false,
 			// pauseOnMouseEnter: true
 		},
