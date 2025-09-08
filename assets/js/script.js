@@ -667,14 +667,15 @@
 
 	
 	// Main Slider
-	var slider = new Swiper('.main-slider', {
+	var heroSlider = new Swiper('.main-slider', {
 		slidesPerView: 1,
 		spaceBetween: 0,
 		loop: true,
 		autoplay: {
 			enabled: true,
-			delay: 5000,
-			disableOnInteraction: false  // Add this line
+			delay: 3000,
+			disableOnInteraction: false,
+			// pauseOnMouseEnter: true
 		},
 		navigation: {
 			nextEl: '.main-slider-next',
@@ -685,7 +686,7 @@
 			el: ".swiper-pagination",
 			clickable: true,
 		},
-		speed: 500,
+		speed: 700,
 		breakpoints: {
 			'1600': {
 				slidesPerView: 1,
@@ -707,6 +708,71 @@
 			},
 		},
 	});
+
+	// Pause/Play Toggle for Hero Slider (support multiple toggles, one per slide)
+	(function(){
+		var heroContainer = document.querySelector('.main-slider');
+		if (!heroContainer || !heroSlider) return;
+
+		var getAllToggles = function(){
+			return Array.prototype.slice.call(document.querySelectorAll('.main-slider-toggle'));
+		};
+
+		var isPaused = !!(heroSlider.autoplay && heroSlider.autoplay.running === false);
+
+		var updateToggleIcons = function(){
+			var toggles = getAllToggles();
+			toggles.forEach(function(btn){
+				var icon = btn.querySelector('i');
+				if (!icon) return;
+				if (isPaused) {
+					icon.classList.remove('fa-pause');
+					icon.classList.add('fa-play');
+					btn.setAttribute('aria-label', 'Play slider');
+					btn.setAttribute('title', 'Play slider');
+				} else {
+					icon.classList.remove('fa-play');
+					icon.classList.add('fa-pause');
+					btn.setAttribute('aria-label', 'Pause slider');
+					btn.setAttribute('title', 'Pause slider');
+				}
+			});
+		};
+
+		var togglePlayback = function(){
+			if (!heroSlider.autoplay) return;
+			if (isPaused) {
+				heroSlider.autoplay.start && heroSlider.autoplay.start();
+				isPaused = false;
+			} else {
+				heroSlider.autoplay.stop && heroSlider.autoplay.stop();
+				isPaused = true;
+			}
+			updateToggleIcons();
+		};
+
+		// Initial sync
+		updateToggleIcons();
+
+		// Event delegation to catch clicks/keypresses from any slide (including clones)
+		heroContainer.addEventListener('click', function(e){
+			var btn = e.target.closest('.main-slider-toggle');
+			if (!btn) return;
+			e.preventDefault();
+			togglePlayback();
+		});
+
+		heroContainer.addEventListener('keydown', function(e){
+			var btn = e.target.closest('.main-slider-toggle');
+			if (!btn) return;
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				togglePlayback();
+			}
+		});
+	})();
+
+	
 
 
 

@@ -92,7 +92,7 @@
 	
 }
 
-.slider-one::before{
+/* .slider-one::before{
 	position:absolute;
 	content: '';
 	left: 0px;
@@ -102,7 +102,7 @@
 	z-index: 10;
 	background-color: var(--color-two);
 	clip-path: polygon(15% 60%, 100% 0, 100% 100%, 0 100%, 0 0);
-}
+} */
 
 .slider-one .swiper-slide{
 	position:relative;
@@ -513,7 +513,7 @@
     backdrop-filter: blur(4px); /* glass effect */
     border-radius: 50%;
     cursor: pointer;
-    z-index: 10;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -521,6 +521,33 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     opacity: 0.6; /* reduced visibility by default */
+}
+
+/* Toggle inline next to CTA */
+.main-slider-toggle{
+    position: static;
+    margin-left: 10px;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.main-slider-toggle:hover{
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.main-slider-toggle i{
+    font-size: 16px;
 }
 
 .main-slider-prev {
@@ -556,17 +583,15 @@
         opacity: 0.4;
     }
 
+    .main-slider-toggle{
+        width: 30px;
+        height: 30px;
+        margin-left: 8px;
+    }
+
     .main-slider-prev:after,
     .main-slider-next:after {
         font-size: 16px;
-    }
-
-    .main-slider-prev {
-        left: 5px;
-    }
-
-    .main-slider-next {
-        right: 5px;
     }
 }
 
@@ -579,6 +604,12 @@
         opacity: 0.3;
     }
 
+    .main-slider-toggle{
+        width: 28px;
+        height: 28px;
+        margin-left: 6px;
+    }
+
     .main-slider-prev:after,
     .main-slider-next:after {
         font-size: 14px;
@@ -588,6 +619,11 @@
 /* Optional: Show buttons on hover over slider container */
 .main-slider:hover .main-slider-prev,
 .main-slider:hover .main-slider-next {
+    opacity: 0.6;
+}
+
+/* Show toggle on hover as well */
+.main-slider:hover .main-slider-toggle{
     opacity: 0.6;
 }
 

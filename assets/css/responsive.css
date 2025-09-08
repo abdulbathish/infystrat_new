@@ -445,7 +445,7 @@
 	}
 
 	.slider-one .swiper-slide{
-		padding: 100px 0px 150px;
+		padding: 100px 0px 90px;
 	}
 
 	.slider-one_image-column{
@@ -598,10 +598,12 @@
 		top: auto;
 		bottom: 20px;
 		transform: none;
-		z-index: 5;
+		z-index: 20;
 	}
 	.main-slider-prev{ left: 12px; }
 	.main-slider-next{ right: 12px; }
+	/* Improve visibility of center toggle on mobile */
+	.main-slider-toggle{ opacity: 0.9; }
 
 	/* Center the slider CTA container and tighten spacing */
 	.slider-one .slider-one_button{
@@ -815,7 +817,7 @@
 	.slider-one .slider-one_button .template-btn{ margin: 0 auto; }
 
 	/* Pull slider bottom padding up to reduce overlap with pagination/arrows */
-	.slider-one .swiper-slide{ padding-bottom: 110px; }
+	.slider-one .swiper-slide{ padding-bottom: 80px; }
 
 	/* Reduce section title and block spacing globally */
 	.sec-title{ margin-bottom: 28px; }
@@ -971,7 +973,7 @@
 	.btn-style-one{ padding: 10px 16px; font-size: 13px; }
 	.slider-one_text{ font-size: 15px; line-height: 24px; }
 	/* Extra space at bottom so arrows/pagination don't overlap CTA */
-	.slider-one .swiper-slide{ padding-bottom: 120px; }
+	.slider-one .swiper-slide{ padding-bottom: 88px; }
 	/* Reduce gaps between repeated elements */
 	.counter-block_one{ margin-bottom: 18px; }
 }
