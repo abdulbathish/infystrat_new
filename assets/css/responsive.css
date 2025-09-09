@@ -831,6 +831,9 @@
 	/* Ensure CTA group and toggle center together */
 	.slider-one .slider-one_button{ width: 100%; justify-content: center; }
 	.slider-one .slider-one_button .template-btn{ margin: 0; }
+	
+	/* Tighter hero spacing on mobile */
+	.slider-one .swiper-slide{ padding: 84px 0px 40px; }
 }
 
 @media only screen and (max-width: 599px){
