@@ -818,7 +818,7 @@
 		border-radius: 6px;
 	}
 	
-	.slider-one .swiper-slide{ padding-bottom: 80px; }
+	/* .slider-one .swiper-slide{ padding-bottom: 80px; } */
 	
 	.sec-title{ margin-bottom: 28px; }
 	.services-one{ padding-top: 40px; padding-bottom: 50px; }
@@ -979,7 +979,7 @@
 	.btn-style-one{ padding: 10px 16px; font-size: 13px; }
 	.slider-one_text{ font-size: 15px; line-height: 24px; }
 	/* Extra space at bottom so arrows/pagination don't overlap CTA */
-	.slider-one .swiper-slide{ padding-bottom: 88px; }
+	/* .slider-one .swiper-slide{ padding-bottom: 88px; } */
 	/* Reduce gaps between repeated elements */
 	.counter-block_one{ margin-bottom: 18px; }
 }
