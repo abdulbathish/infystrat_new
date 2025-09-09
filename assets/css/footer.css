@@ -154,7 +154,7 @@
 .footer-copyright{
 	position: relative;
 	font-size: 17px;
-	color: var(--color-three);
+	color: var(--white-color);
 }
 
 .footer-copyright a{
