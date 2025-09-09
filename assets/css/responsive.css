@@ -377,9 +377,14 @@
 		position: static;
 		display:block;
 	}
-
+	
 	.main-header{
-		position:relative;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		z-index: 1000;
 		background-color: var(--color-two);
 	}
 	
@@ -417,25 +422,25 @@
 	.banner-one{
 		padding-top: 100px;
 	}
-
+	
 	.conversation-one_chat-outer{
 		padding: 25px 20px;
 	}
-
+	
 	.clients-one .inner-container{
 		padding-left: 25px;
 		padding-right: 25px;
 	}
-
+	
 	.testimonial-block_two-content-outer{
 		padding-top: 0px;
 	}
-
+	
 	.testimonial-block_two-text{
 		font-size: 20px;
 		line-height: 34px;
 	}
-
+	
 }
 
 @media only screen and (max-width: 991px){
@@ -662,14 +667,14 @@
 		position:relative;
 		width:100%;
 	}
-
+	
 	.main-header .sticky-header .outer-box{
 		display:block;
 		right: 0px;
 		left: auto;
 		top:0px;
 	}
-
+	
 	.main-header .main-menu{
 		width:100%;
 		display:none;
@@ -686,7 +691,7 @@
 		text-align:center;
 		padding-bottom:10px;
 	}
-
+	
 	.main-header .header-lower .outer-box{
 		position:relative;
 		z-index:12;
@@ -727,107 +732,105 @@
 	.main-header .mCSB_inside > .mCSB_container{
 		margin-right:0px;
 	}
-
+	
 	h1{
     	line-height: 56px;
     	font-size: 40px;
   	}
-
+	
 	.counter-block_one-inner{
 		text-align: center;
 	}
-
+	
 	.answer-one_content-outer{
 		padding: 25px 25px;
 	}
-
+	
 	.footer-copyright{
 		order: 3;
 		margin-top: 15px;
 	}
-
+	
 	.footer-social_box{
 		order: 2;
 	}
-
+	
 	.banner-one_icon,
 	.main-header_buttons{
 		display: none;
 	}
-
+	
 	.banner-one_content-inner{
 		padding-bottom: 30px;
 	}
-
+	
 	.counter-one .inner-container{
 		padding: 50px 15px 20px;
 	}
-
+	
 	.price-two .pricing-tabs .buttons-outer{
 		margin-top: 0px;
 		text-align: center;
 	}
-
+	
 	.news-block_two-button{
 		margin-top: 25px;
 	}
-
+	
 	.news-block_two-hover{
 		display: none;
 	}
-
+	
 	.cta-four_title{
 		font-size: 36px;
 		line-height: 46px;
 	}
-
+	
 	.slider-two_content-inner{
 		padding-left: 15px;
 		padding-right: 15px;
 	}
-
+	
 	.page-title{
 		padding: 100px 0px 100px;
 	}
-
+	
 	.team-detail_image{
 		display: block;
 	}
-
+	
 	.team-detail_image img{
 		width: 100%;
 	}
-
+	
+	/* Restore mobile sizing and spacing */
 	.error-one h1{
 		font-size: 180px;
 	}
-
+	
 	.main-header .mobile-nav-toggler{
 		margin-left: 12px;
 	}
-
-	/* Make CTA button smaller and full-tap friendly */
+	
 	.btn-style-one{
 		padding: 12px 18px;
 		font-size: 14px;
 		border-radius: 6px;
 	}
-	/* Center CTA wrapper on small screens */
-	.slider-one .slider-one_button{ width: 100%; }
-	.slider-one .slider-one_button .template-btn{ margin: 0 auto; }
-
-	/* Pull slider bottom padding up to reduce overlap with pagination/arrows */
+	
 	.slider-one .swiper-slide{ padding-bottom: 80px; }
-
-	/* Reduce section title and block spacing globally */
+	
 	.sec-title{ margin-bottom: 28px; }
 	.services-one{ padding-top: 40px; padding-bottom: 50px; }
 	.news-one{ padding-top: 40px; padding-bottom: 50px; }
 	.social-one{ padding-bottom: 70px; }
-
-	/* Tighten service cards */
+	
 	.service-block_one-inner{ padding: 22px 20px; }
 	.service-block_two-inner{ padding: 22px 20px; }
+	
+	/* Ensure CTA group and toggle center together */
+	.slider-one .slider-one_button{ width: 100%; justify-content: center; }
+	.slider-one .slider-one_button .template-btn{ margin: 0; }
 }
 
 @media only screen and (max-width: 599px){
