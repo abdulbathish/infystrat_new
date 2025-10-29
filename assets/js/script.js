@@ -85,7 +85,19 @@
 		
 		//$('.mobile-menu .menu-box').mCustomScrollbar();
 		
-		var mobileMenuContent = $('.main-header .nav-outer .main-menu').html();
+		var mobileMenuContent = $('.main-header .main-nav').html();
+		
+		// Convert nav classes to mobile classes
+		mobileMenuContent = mobileMenuContent.replace(/nav-list/g, 'mobile-nav-list');
+		mobileMenuContent = mobileMenuContent.replace(/nav-item/g, 'mobile-nav-item');
+		mobileMenuContent = mobileMenuContent.replace(/nav-link/g, 'mobile-nav-link');
+		
+		// Add Contact Us link from right navigation
+		var rightNavContent = $('.main-header .right-nav').html();
+		if(rightNavContent) {
+			mobileMenuContent += '<li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>';
+		}
+		
 		$('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent);
 		$('.sticky-header .main-menu').append(mobileMenuContent);
 		
@@ -437,13 +449,16 @@
 
 
 
-    // Add contact button to mobile menu
-    const contactBtn = document.querySelector('.contact-btn');
-    if (contactBtn) {
-        const mobileContactItem = document.createElement('li');
-        mobileContactItem.className = 'mobile-nav-item';
-        mobileContactItem.innerHTML = `<a href="${contactBtn.getAttribute('href')}" class="mobile-nav-link">${contactBtn.textContent}</a>`;
-        mobileNavList.appendChild(mobileContactItem);
+    // Add Contact Us link from right navigation
+    const rightNav = document.querySelector('.right-nav');
+    if (rightNav) {
+        const contactLink = rightNav.querySelector('.nav-link');
+        if (contactLink) {
+            const mobileContactItem = document.createElement('li');
+            mobileContactItem.className = 'mobile-nav-item';
+            mobileContactItem.innerHTML = `<a href="${contactLink.getAttribute('href')}" class="mobile-nav-link">${contactLink.textContent}</a>`;
+            mobileNavList.appendChild(mobileContactItem);
+        }
     }
 
     mobileMenu.appendChild(mobileNavList);
