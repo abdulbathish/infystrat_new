@@ -8228,3 +8228,10 @@
 @media (max-width: 767px) {
 	.counter-one .counter-block_one-inner { min-height: 140px; }
 }
+
+.footer-logo img {
+  max-width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
