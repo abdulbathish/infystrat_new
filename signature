@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfyStrat | Email Signature Guidelines</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 40px 20px; background-color: #ffffff; }
+        .brand-header { border-bottom: 2px solid #1e56a4; padding-bottom: 15px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; }
+        .brand-header h1 { color: #1e56a4; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* New Detailed Guideline Section */
+        .instruction-container { background: #f4f7f9; border: 1px solid #d1d9e0; border-radius: 6px; padding: 30px; margin-bottom: 40px; }
+        .instruction-container h2 { margin-top: 0; font-size: 20px; color: #1e56a4; border-bottom: 1px solid #cbd5e0; padding-bottom: 10px; margin-bottom: 20px; }
+        .step-list { margin: 0; padding-left: 20px; }
+        .step-list li { margin-bottom: 15px; font-size: 14px; }
+        .step-list strong { color: #1e56a4; }
+        .warning-note { font-size: 13px; color: #c53030; background: #fff5f5; padding: 10px; border-radius: 4px; margin-top: 15px; border: 1px solid #feb2b2; }
+
+        .structure-table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 13px; background: #fff; }
+        .structure-table th { text-align: left; background: #e2e8f0; padding: 12px; border: 1px solid #cbd5e0; color: #1e56a4; text-transform: uppercase; letter-spacing: 0.5px; }
+        .structure-table td { padding: 12px; border: 1px solid #cbd5e0; vertical-align: top; }
+
+        .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        @media (max-width: 750px) { .role-grid { grid-template-columns: 1fr; } }
+
+        .role-card { border: 1px solid #e2e8f0; padding: 25px; background: #fff; display: flex; flex-direction: column; border-top: 4px solid #1e56a4; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .role-label { font-size: 11px; font-weight: bold; color: #1e56a4; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 15px; }
+        
+        /* Signature Styles */
+        .sig-block { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.4; flex-grow: 1; border: 1px dashed #edf2f7; padding: 15px; background: #fcfcfc; }
+        .sig-name { color: #1e56a4; font-weight: bold; font-size: 17px; margin-bottom: 2px; }
+        .sig-title { color: #333333; font-weight: 600; font-size: 12px; }
+        .sig-region-caps { color: #666666; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; margin-bottom: 8px; }
+        .sig-staff-line { font-size: 11px; color: #333333; font-weight: 600; margin-bottom: 8px; }
+        .sig-contact { font-size: 11px; color: #666666; }
+        .sig-link { color: #1e56a4; text-decoration: none; }
+        .divider { color: #cccccc; margin: 0 6px; }
+
+        .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999; }
+    </style>
+</head>
+<body>
+
+    <div class="brand-header">
+        <h1>InfyStrat Corporate Standards</h1>
+        <img src="https://raw.githubusercontent.com/abdulbathish/infystrat_new/refs/heads/main/assets/logos/InfyStrat.png" alt="Logo" width="75">
+    </div>
+
+    <div class="instruction-container">
+        <h2>How to Setup Your Signature</h2>
+        <ul class="step-list">
+            <li><strong>Step 1: Highlight & Copy</strong><br>
+                Use your mouse to highlight all text within the dashed box of the example that matches your role. Press <strong>Ctrl + C</strong> to copy. This ensures you copy the <u>formatted text</u> (including colors and fonts).
+            </li>
+            <li><strong>Step 2: Access Outlook Settings</strong><br>
+                <strong>Desktop:</strong> Go to <em>File > Options > Mail > Signatures</em>.<br>
+                <strong>Web/O365:</strong> Click the <em>Settings Gear > View all Outlook settings > Mail > Compose and reply</em>.
+            </li>
+            <li><strong>Step 3: Paste as Formatted Text</strong><br>
+                Click into the signature edit box and press <strong>Ctrl + V</strong>. If a small icon appears after pasting, ensure <strong>"Keep Source Formatting"</strong> is selected.
+            </li>
+            <li><strong>Step 4: Personalize Your Details</strong><br>
+                Replace "John Doe" with your full name. Update the Job Title, Region, and Mobile number. Ensure your email address is correctly hyperlinked.
+            </li>
+        </ul>
+        <div class="warning-note">
+            <strong>Important:</strong> Do not manually add the InfyStrat logo or legal disclaimers. These are automatically attached by the central Exchange server to ensure a uniform global footer.
+        </div>
+    </div>
+
+    <div class="guideline-box" style="margin-bottom: 40px;">
+        <h2 style="font-size: 18px; color: #1e56a4; border-bottom: 1px solid #eee; padding-bottom: 10px;">Visual Structure Rules</h2>
+        <table class="structure-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Required Information</th>
+                    <th>Standardized Styling</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Identity</strong></td>
+                    <td>Official First & Last Name</td>
+                    <td>InfyStrat Blue (#1e56a4), Bold, 17px</td>
+                </tr>
+                <tr>
+                    <td><strong>Scope</strong></td>
+                    <td>Designation | Primary Region</td>
+                    <td>Dark Grey (#333333), 11px-12px. Pipe "|" for office staff.</td>
+                </tr>
+                <tr>
+                    <td><strong>Connectivity</strong></td>
+                    <td>Corporate Mobile & Email</td>
+                    <td>Grey (#666666), 11px. Phone and Email on separate lines.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="role-grid">
+        
+        <div class="role-card">
+            <div class="role-label">Global Leadership Styles</div>
+            <div class="sig-block">
+                <div class="sig-name">John Doe</div>
+                <div class="sig-title">Chief Financial Officer</div>
+                <div class="sig-region-caps" style="letter-spacing: 2px;">GLOBAL OPERATIONS</div>
+                <div class="sig-contact">
+                    <strong>M:</strong> +XX XXX XXX XXXX<br>
+                    <strong>E:</strong> <a href="mailto:john.doe@infystrat.com" class="sig-link">john.doe@infystrat.com</a>
+                </div>
+            </div>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">Format used for Global Executive oversight and C-Suite members.</p>
+        </div>
+
+        <div class="role-card">
+            <div class="role-label">Regional Leadership Styles</div>
+            <div class="sig-block">
+                <div class="sig-name">John Doe</div>
+                <div class="sig-title">Vice President</div>
+                <div class="sig-region-caps">INDIA &middot; MIDDLE EAST</div>
+                <div class="sig-contact">
+                    <strong>M:</strong> +91 XX XXXX XXXX<br>
+                    <strong>E:</strong> <a href="mailto:john.doe@infystrat.com" class="sig-link">john.doe@infystrat.com</a>
+                </div>
+            </div>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">Format used for Regional VPs, Directors, and Country Heads.</p>
+        </div>
+
+        <div class="role-card">
+            <div class="role-label">Regional Staff Examples</div>
+            <div class="sig-block">
+                <div class="sig-name">John Doe</div>
+                <div class="sig-staff-line">
+                    Full Stack Developer <span class="divider">|</span> <span style="font-weight: normal; color: #666;">India Office</span>
+                </div>
+                <div class="sig-contact">
+                    <strong>M:</strong> +91 XX XXXX XXXX<br>
+                    <strong>E:</strong> <a href="mailto:john.doe@infystrat.com" class="sig-link">john.doe@infystrat.com</a>
+                </div>
+            </div>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">Standardized format for technical, delivery, and corporate functions.</p>
+        </div>
+
+        <div class="role-card">
+            <div class="role-label">Regional Staff Examples</div>
+            <div class="sig-block">
+                <div class="sig-name">John Doe</div>
+                <div class="sig-staff-line">
+                    Business Analyst <span class="divider">|</span> <span style="font-weight: normal; color: #666;">Middle East Office</span>
+                </div>
+                <div class="sig-contact">
+                    <strong>M:</strong> +971 XX XXX XXXX<br>
+                    <strong>E:</strong> <a href="mailto:john.doe@infystrat.com" class="sig-link">john.doe@infystrat.com</a>
+                </div>
+            </div>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">Standardized format for technical, delivery, and corporate functions.</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        &copy; 2026 InfyStrat Software Services. For internal distribution only. <br>
+        Maintained by Global Operations Infrastructure.
+    </div>
+
+</body>
+</html>
